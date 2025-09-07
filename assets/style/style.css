@@ -1,0 +1,22 @@
+.work-sans> {
+  font-family: "Work Sans", sans-serif;
+}
+
+@keyframes float-left {
+  0%, 100% { transform: translateY(-50%) translateX(0); }
+  50% { transform: translateY(-55%) translateX(10px); }
+}
+
+@keyframes float-right {
+  0%, 100% { transform: translateY(-50%) translateX(0); }
+  50% { transform: translateY(-55%) translateX(-10px); }
+}
+
+/* Tailwind custom classes */
+.animate-float-left {
+  animation: float-left 6s ease-in-out infinite;
+}
+
+.animate-float-right {
+  animation: float-right 6s ease-in-out infinite;
+}
