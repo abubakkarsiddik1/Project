@@ -74,48 +74,137 @@
     <a class="btn bg-[#FACC15] rounded-full  hover:bg-yellow-500 text-[#15803D] font-semibold px-6 py-2 rounded-full shadow-md transition">Plant a Tree</a>
   </div>
 </div>
-<!-- <header class="">
-  <div class="relative flex items-center justify-center bg-[#CFF0DC] mx-auto gap-x-px">
 
-    <img class="" src="./hero-leaf1.png" alt="Leaf Left">
-
-    <p class="text-center col-span-full py-10 space-y-6 text-xl ">
-      Join our mission to plant 1 million trees and make the Earth greener for future <br> generations.
-    </p>
-    
-    <a class="btn bg-[#FACC15] rounded-full">Plant a Tree</a>
-
-    <img class="" src="./hero-leaf2.png" alt="Leaf Right">
-  </div>
-</header> -->
+  <section class="bg bg-[#CFF0DC] md:flex-row flex flex-col-reverse relative h-full min-w-50 items-center justify-center justify-between cal-span-full overflow-hidden px-4 py-8 gap-10 mx-auto">
   
-
-<!-- Banner Section -->
-  <section class="relative bg-[#CFF0DC] h-[450px] md:h-[550px] flex items-center justify-center overflow-hidden px-4 ">
     
     <!-- Left Leaf -->
     <img src="./assets/hero-leaf1.png" 
          alt="Leaf Left" 
-         class="absolute left-0 top-1/2 -translate-y-1/2 w-40 md:w-60">
+         class="absolute left-0 top-1/2 -translate-y-1/2 w-24 sm:w-32 md:w-67 lg:w-67">
+        
 
     <!-- Right Leaf -->
     <img src="./assets/hero-leaf2.png" 
          alt="Leaf Right" 
-         class="absolute right-0 top-1/2 -translate-y-1/2 w-40 md:w-60">
-
+         class="absolute right-0 top-1/2 -translate-y-1/2 w-24 sm:w-32 md:w-67 lg:w-67">
+         
     <!-- Center Content -->
-    <div class="text-center max-w-xl mx-auto">
-      <p class="text-[#1F2937] text-sm md:text-base mb-4">
+    <div class="text-center max-w-xl mx-auto relative z-10 flex flex-col items-center justify-center space-y-4">
+     
+      
+      <p class="text-[#1F2937] text-sm sm:text-base md:text-lg lg:text-xl">
+        
         Join our mission to plant 1 million trees and make the Earth greener for future generations.
       </p>
       <button id="getInvolvedBtn" 
-              class="bg-[#FACC15] hover:bg-yellow-500 text-[#15803D] font-semibold px-6 py-2 rounded-full shadow-md transition">
+              class="bg-[#FACC15] hover:bg-yellow-500 text-[#15803D] font-semibold px-6 py-2 rounded-full shadow-md transition md:px-8 md:py-3">
         Get Involved
       </button>
     </div>
   </section>
+
+  <!-- Main Content -->
+<main class="max-w-6xl mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-12 gap-6">
   
-  <script src="./index.js"></script>
+<!-- Categories -->
+<aside id="categoryContainer" class="md:col-span-2 bg-white p-4 rounded shadow-sm sticky top-6 h-max">
+  <h3 class="font-semibold mb-3 ">Categories</h3>
+  <div id="categories" class="flex flex-col gap-2 text-sm">
+  <div class="flex justify-center">
+  <div class="spinner-border" id="cart-spinner">
+  
+</div>
+</div>
+</div>
+</aside>
+
+  <!-- Cards -->
+    <section class="md:col-span-8">
+      <h2 class="text-center text-lg font-semibold mb-6">Choose Your Trees</h2>
+      <div id="cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="col-span-full flex justify-center"><div class="spinner-border" id="data-spinner">
+
+        </div>
+      </div>
+      </div>
+    </section>
+
+     <!-- Cart -->
+    <aside class="md:col-span-2 bg-white p-4 rounded shadow-sm h-max">
+      <h3 class="font-semibold mb-3">Your Cart</h3>
+      <div id="cart-items" class="text-sm space-y-2">No items yet</div>
+      <div class="mt-4 border-t pt-3">
+        <div class="flex justify-between font-semibold">Total <span>$<span id="cart-total">0.00</span></span></div>
+      </div>
+    </aside>
+  </main>
+
+    <!-- About the Campaign -->
+     
+  <section id="about" class="max-w-6xl mx-auto px-4 py-8 bg-emerald-50">
+    <div class="grid md:grid-cols-3 gap-6 items-center">
+      <div class="md:col-span-1">
+        <img src="./assets/about.png" alt="plant" class="rounded shadow" />
+      </div>
+      <div class="md:col-span-2">
+        <h3 class="text-xl font-semibold mb-3">About the Campaign</h3>
+        <p class="mb-3">Green Earth is a global tree-planting initiative focused on community restoration, carbon offset, and biodiversity improvement. We partner with local nurseries and volunteers to ensure survival and growth.</p>
+        <ul class="list-disc pl-5 text-sm text-gray-600">
+          <li>Community-led planting events and maintenance</li>
+          <li>First-year care and monitoring for every sapling</li>
+          <li>Digital certificate + planting details for sponsors</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact -->
+  <section class=" mx-auto gap-50 py-8 p-40 rounded-2xl bg-[#CFF0DC] font-bold">
+    <h3 class="text-center text-lg font-semibold mb-6">Our Impact</h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-white p-6 rounded shadow text-center">
+        <div class="text-4xl font-bold text-[#15803D]">500K+</div>
+        <div class="text-sm text-[#1F2937] mt-2">Trees Planted</div>
+      </div>
+      <div class="bg-white p-6 rounded shadow text-center">
+        <div class="text-4xl font-bold text-[#15803D]">120+</div>
+        <div class="text-sm text-[#1F2937] mt-2">Communities Worked With</div>
+      </div>
+      <div class="bg-white p-6 rounded shadow text-center">
+        <div class="text-4xl font-bold text-[#15803D]">30+</div>
+        <div class="text-sm text-[#1F2937] mt-2">Countries Reached</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Plant Form -->
+  <section id="plant" class="bg bg-[#166534] py-10">
+    <div class="max-w-md mx-auto bg-[#15803D] p-6 rounded text-white shadow-lg">
+      <h4 class="text-center font-semibold mb-4">Plant a Tree Today</h4>
+
+      <form id="donation-form" class="space-y-3">
+        <input required id="donor-name" class="w-full p-2 rounded" placeholder="Your Name">
+
+        <input required id="donor-email" type="email" class="w-full p-2 rounded" placeholder="Your Email">
+
+        <select id="donor-count" class="w-full p-2 rounded">
+          <option value="1">1 Tree</option>
+          <option value="5">5 Trees</option>
+          <option value="10">10 Trees</option>
+        </select>
+        <button type="submit" class="w-full py-2 rounded font-semibold cta-yellow bg-[#FACC15] rounded-full">Donate Now</button>
+      </form>
+    </div>
+  </section>
+  
+  <!-- footer -->
+
+  <footer class="bg-[#14532D] flex gap-5 py-6 flex-wrap justify-center text-[#FFFFFF] ">
+    © 2025 Green Earth. All Rights Reserved.
+  </footer>
+
+  <script src="./script.js"></script>
 </body>
 </html>
 
