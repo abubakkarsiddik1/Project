@@ -25,11 +25,14 @@ const showCategory = (plants) => {
 });
 
     categoryContainer.addEventListener('click', (e) =>{
+      const allLi = document.querySelectorAll('li')
+      
+      allLi.forEach(li =>)
       if (e.target === 'li');
       console.log(e.target)
       e.target.classList.add('border-b-4')
     })
-}
+};
 
 
 loadCategory ();
