@@ -123,3 +123,123 @@ document.getElementById('donation-form').addEventListener('submit', (e)=>{ e.pre
 // initial load
 loadCategories(); loadAllPlants();
 
+
+
+const categoriesList = document.getElementById('categories');
+const cardsContainer = document.getElementById('cardsContainer');
+const cartItemsContainer = document.getElementById('cart-items');
+const cartTotalElement = document.getElementById('cart-total');
+
+let cart = [];
+
+ const loadCategory = () => {
+    fetch("https://openapi.programming-hero.com/api/plants")
+    .then(res => res.json())
+    .then(data => {
+      // const plants = data.plants
+      // plants.forEach(plant => 
+        const categorie = data.plants
+        console.log(categorie)
+        showCategory(categorie)       
+      })
+    .catch(err => {
+      console.log(err);
+    });
+  };
+  const showCategory = (categories) => {
+    categoriesList.innerHTML = ""; 
+    categories.forEach(plant => {
+      categoriesList.innerHTML += `<li id="${plant.plantsId}" class="px-3 py-2 bg-green-100 rounded hover:bg-green-200 border-red-600 text-left">
+          ${plant.name} 
+          </li>`;
+    });
+  
+    categoriesList.addEventListener('click', (e) => {
+      const allLi = document.querySelectorAll('li')
+      // console.log(allLi)
+      allLi.forEach(li => {
+        li.classList.remove('border-b-4')
+      })
+      if(e.target.localName === 'li') {
+        console.log(e.target)
+        e.target.classList.add('border-b-4')
+        loadGreenByCategory(e.target.id)
+      }
+    });
+  };
+    const loadGreenByCategory = (plantsid) => {
+      console.log(plantsid)
+      fetch(`https://openapi.programming-hero.com/api/category/${categoryid}`)
+      .then((res) => res.json())
+      .then(data => {
+        console.log(data.category)
+
+        showGreenByCategory(data.category)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+  const showGreenByCategory = (plants) => {
+    console.log(plants)
+    cardsContainer.innerHTML = "";
+      plants.forEach(plants => {
+        cardsContainer.innerHTML +=  `<div class="mt-4">
+        <div class="text-lg md:text-xl font-semibold">
+          <img src="${plants.image}" alt="${plants.name}" class="mx-auto mb-2 w-full h-30 object-cover rounded">
+          <h4 class="text-lg md:text-xl font-semibold">${plants.name}</h4>
+          <p class="text-gray-600 text-sm md:text-base mt-1">${plants.description}</p>
+          <p class="bg-[#DCFCE7] px-3 py-1 rounded-full text-xs md:text-sm ">${plants.category}</p>
+          <p class="text-gray-800 font-bold ">$${plants.price}</p>
+          <button 
+            onclick="addtocard('${plants.plantId}', '${plants.name}', ${plants.price})" 
+            class="w-full py-2 rounded font-semibold cta-yellow bg-[#15803D] rounded-full text-white">
+            Add to Cart
+          </button>
+        </div> 
+      </div>
+    `;
+  });
+};
+const addtocard = (id, name, price) => {
+  const existingItem = cart.find(item => item.id === id);
+  if (existingItem) {
+    existingItem.quantity += 1;
+  } else {
+    cart.push({ id, name, price, quantity: 1 });
+  }
+  updateCart();
+};
+
+const removeFromCart = (id) => {
+  cart = cart.filter(item => item.id !== id);
+  updateCart();
+};
+
+const updateCart = () => {
+  cartItemsContainer.innerHTML = "";
+  let total = 0;
+
+  if (cart.length === 0) {
+    cartItemsContainer.innerHTML = `<p class="text-gray-500">No items yet</p>`;
+  } else {
+    cart.forEach(item => {
+      total += item.price * item.quantity;
+      cartItemsContainer.innerHTML += `
+        <div class="flex justify-between items-center">
+          <span>${item.name} (x ${item.quantity})</span>
+          <div class="flex items-center gap-2">
+          <span>$${(item.price * item.quantity).toFixed(2)}</span>
+          <button 
+              onclick="removeFromCart('${item.id}')"
+              class="text-black">x</button>
+        </div>
+      `;
+    });
+  }
+
+  cartTotalElement.textContent = total.toFixed(2);
+};
+
+    loadCategory();
+    loadGreenByCategory('1')

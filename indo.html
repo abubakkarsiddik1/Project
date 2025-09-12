@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plant Shop Card</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+  <!-- Product Card -->
+  <div class="max-w-xs md:max-w-sm lg:max-w-md bg-white shadow-lg rounded-xl overflow-hidden p-4">
+    
+    <!-- Image Placeholder -->
+    <div class="bg-gray-200 h-40 md:h-48 lg:h-56 flex items-center justify-center rounded-lg">
+      <span class="text-gray-500">Image Here</span>
+    </div>
+
+    <!-- Text Content -->
+    <div class="mt-4">
+      <h2 class="text-lg md:text-xl font-semibold">Mango Tree</h2>
+      <p class="text-gray-600 text-sm md:text-base mt-1">
+        A fast-growing tropical tree that produces delicious, juicy mangoes during summer. Its dense green...
+      </p>
+    </div>
+
+    <!-- Category & Price -->
+    <div class="flex items-center justify-between mt-3">
+      <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs md:text-sm">Fruit Tree</span>
+      <span class="text-gray-800 font-bold">৳500</span>
+    </div>
+
+    <!-- Button -->
+    <button 
+      id="addToCartBtn"
+      class="w-full mt-4 bg-green-600 hover:bg-green-700 text-white py-2 rounded-full text-sm md:text-base transition">
+      Add to Cart
+    </button>
+
+    <!-- Cart Message -->
+    <p id="cartMsg" class="hidden mt-2 text-green-600 font-medium text-sm"></p>
+
+  </div>
+
+  <!-- JS / DOM -->
+  <script>
+    const btn = document.getElementById("addToCartBtn");
+    const msg = document.getElementById("cartMsg");
+
+    btn.addEventListener("click", () => {
+      msg.innerText = "✅ Mango Tree added to cart!";
+      msg.classList.remove("hidden");
+    });
+  </script>
+
+</body>
+</html>
+
+
+const addtocard = (id, name, price) => {
+  const existingItem = cart.find(item => item.id === id);
+  if (existingItem) {
+     existingItem.quantity += 1;
+   } else {
+     cart.push({ id, name, price, quantity: 1 });
+   }
+   updateCart();
+ };
+
+ const removeFromCart = (id) => {
+   cart = cart.filter(item => item.id !== id);
+//   updateCart();
+// };
+
+// const updateCart = () => {
+//   cartItemsContainer.innerHTML = "";
+//   let total = 0;
+
+//   if (cart.length === 0) {
+//     cartItemsContainer.innerHTML = `<p class="text-gray-500">No items yet</p>`;
+//   } else {
+//     cart.forEach(item => {
+//       total += item.price * item.quantity;
+//       cartItemsContainer.innerHTML += `
+//         <div class="flex justify-between items-center">
+//           <span>${item.name} (x ${item.quantity})</span>
+//           <div class="flex items-center gap-2">
+//           <span>$${(item.price * item.quantity).toFixed(2)}</span>
+//           <button 
+//               onclick="removeFromCart('${item.id}')"
+//               class="text-black">x</button>
+//         </div>
+//       `;
+//     });
+//   }
+
+//   cartTotalElement.textContent = total.toFixed(2);
+// };
